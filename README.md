@@ -19,13 +19,18 @@ My Booksafe is an app created for readers that want a simple, straightforward on
 -As an user, I want the ability to log in.
 -As an user, I want the ability to log out.
 -As an user, I want the ability to add a new book to my journal.
--As an user, I want the ability to edit and delete my books.
+-As an user, I want the ability to 
+-As an user, I want the ability to edit a book. 
+-As an user, I want the ability to delete my books.
+-As an user, I want the ability to leave a comment on a book.
+-As an user I want the ability to interact with another user in the comments.
+
 
 ```
 
 ## ERD
 
-![erd2](https://user-images.githubusercontent.com/77081100/194781102-5f7b6c01-05f1-485e-bbcb-bf7959a45b67.jpg)
+![MBerd](https://user-images.githubusercontent.com/77081100/194913610-15e615e3-f17f-4a48-a9b5-0717355b1037.jpg)
 
 ##  SEED EXAMPLE
 ```
