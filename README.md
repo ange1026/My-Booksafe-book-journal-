@@ -32,11 +32,8 @@ My Booksafe is an app created for readers that want a simple, straightforward on
 -As an user, I want the ability to edit my comment.
 -As an user, I want the ability to edit a book. 
 -As an user, I want the ability to delete a book.
-<<<<<<< HEAD
-=======
 -As an user, I want the ability to leave a comment on a book.
 -As an user, I want the ability to interact with another user in the comments.
->>>>>>> refs/remotes/origin/main
 ```
 
 ## ERD
