@@ -26,3 +26,17 @@ My Booksafe is an app created for readers that want a simple, straightforward on
 ## ERD
 
 ![erd2](https://user-images.githubusercontent.com/77081100/194781102-5f7b6c01-05f1-485e-bbcb-bf7959a45b67.jpg)
+
+##  SEED EXAMPLE
+```
+{title: string,
+author: string,
+genre: string,
+finished: boolean,
+ note: {
+    type: string
+ }}
+```
+## PLANNING
+Monday-Wednesday: Back-end
+Front End and finishing touches the rest of the week.
