@@ -20,10 +20,18 @@ My Booksafe is an app created for readers that want a simple, straightforward on
 -As an user, I want the ability to log out.
 -As an user, I want the ability to add a new book to my journal.
 -As an user, I want the ability to leave a note on my thoughts about the book.
+-As an user, I want to be able to se my notes across all books.
+-As an user, I'm not going to be able to see other users notes.
+-As an user, other users are not going to be able to see my notes.
+-As an user, I want to be able to edit my notes.
+-As an user, I want to be able to delete my notes.
+-As an user, I want the ability to create a comment on a book.
+-As an user, I want the ability to see all comments on a book.
+-As an user, I want the ability to interact with another user in the comments.
+-As an user, I want the ability to delete my comment.
+-As an user, I want the ability to edit my comment.
 -As an user, I want the ability to edit a book. 
 -As an user, I want the ability to delete a book.
--As an user, I want the ability to leave a comment on a book.
--As an user I want the ability to interact with another user in the comments.
 ```
 
 ## ERD
