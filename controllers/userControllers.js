@@ -29,11 +29,13 @@ router.post('/signup', async (req, res) => {
 	User.create(req.body)
 		// if created successfully redirect to login
 		.then((user) => {
+			console.log(user)
 			res.redirect('/users/login')
 		})
 		// if an error occurs, send err
-		.catch((error) => {
-			res.redirect(`/error?error=${error}`)
+		.catch((err) => {
+			console.log(err)
+			res.redirect(`/error?error=username%20already%20taken`)
 		})
 })
 

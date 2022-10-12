@@ -3,7 +3,7 @@
 <div class="container-sm">
     <form action="/books" method="POST">
         <fieldset>
-            <legend>Create New Example</legend>
+            <legend>Create New Book</legend>
             <label class="form-label">Title: </label>
             <input 
                 type="text" 
@@ -12,32 +12,41 @@
                 value="{{ book.title }}"
                 class="form-control"
             >
-            <label class="form-label">Body:</label>
+            <label class="form-label">Author:</label>
             <input 
                 type="text" 
                 name="author" 
-                placeholder="{{ author.body }}" 
-                value="{{ example.body }}" 
+                placeholder="{{ book.author }}" 
+                value="{{ book.author }}" 
                 class="form-control"
             >
-            <label class="form-label">Amount:</label>
+            <label class="form-label">Genre:</label>
             <input 
-                type="number" 
-                name="amount"
-                value="{{ example.amount }}"
+                type="text" 
+                name="genre"
+                placeholder="{{ book.genre }}"
+                value="{{ book.genre }}"
                 class="form-control"
             >
-            <label class="form-label">Ready:</label>
+            <label class="form-label">Have read:</label>
             <input 
                 type="checkbox" 
-                name="ready" 
+                name="haveRead" 
                 class="form-check-input"
-                {% if example.ready %}
+                {% if book.haveRead %}
                     checked
                 {% endif %}
             >
+            <br>
+            <label class="form-label">Notes</label>
+            <input
+            type="text"
+            name="notes"
+            placeholder="Here you can write your thoughts about the book"
+            value="{{ book.notes }}"
+            class="form-control">
         </fieldset>
-        <input type="submit" value="Edit Example" class="btn btn-success">
+        <input type="submit" value="Edit Book" class="btn btn-success">
     </form>
 </div>
 {% endblock %}

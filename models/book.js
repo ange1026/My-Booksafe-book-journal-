@@ -19,6 +19,7 @@ const booksSchema = new Schema(
 			type: Schema.Types.ObjectId,
 			ref: 'User',
 		},
+		notes: { type: String, required: true},
 		comments: [commentSchema]
 	},
 	{ timestamps: true }
