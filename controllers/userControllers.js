@@ -15,7 +15,7 @@ const router = express.Router()
 
 // GET to render the signup form
 router.get('/signup', (req, res) => {
-	res.render('auth/signup')
+	res.render('users/signup')
 })
 
 // POST to send the signup info
@@ -29,7 +29,7 @@ router.post('/signup', async (req, res) => {
 	User.create(req.body)
 		// if created successfully redirect to login
 		.then((user) => {
-			res.redirect('/auth/login')
+			res.redirect('/users/login')
 		})
 		// if an error occurs, send err
 		.catch((error) => {
@@ -40,7 +40,7 @@ router.post('/signup', async (req, res) => {
 // two login routes
 // get to render the login form
 router.get('/login', (req, res) => {
-	res.render('auth/login')
+	res.render('users/login')
 })
 // post to send the login info(and create a session)
 router.post('/login', async (req, res) => {

@@ -10,13 +10,14 @@ const { Schema, model } = mongoose
 const booksSchema = new Schema(
 	{
 		title: { type: String, required: true },
-		body: { type: String, required: true },
-        amount: { type: Number, required: true },
-		ready: { type: Boolean, required: true },
+		author: { type: String, required: true },
+        genre: { type: String, required: true },
+		haveRead: { type: Boolean, required: true },
 		owner: {
-			type: Schema.Types.ObjectID,
+			type: Schema.Types.ObjectId,
 			ref: 'User',
 		}
+		// comments: [commentSchema]
 	},
 	{ timestamps: true }
 )

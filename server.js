@@ -5,7 +5,7 @@ require("dotenv").config() // make env variables available
 const express = require("express")
 const middleware = require('./utils/middleware')
 const BookRouter = require('./controllers/bookControllers')
-const UserRouter = require('./controllers/user')
+const UserRouter = require('./controllers/userControllers')
 const User = require("./models/user")
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
 // user and resource routes linked in ./utils/middleware.js
