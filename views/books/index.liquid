@@ -1,0 +1,37 @@
+{% layout 'layout.liquid'%}
+{% block content %}
+    {% if books.length > 0 %}
+<div>
+    <h2 class="display-6">All Books</h2>
+    <div class="row">
+        {% for book in books %}
+        <div class="card" style="width: 18rem;">
+            <h5 class="card-header">{{ book.title }}</h5>
+            <div class="card-body">
+                <h5 class="card-title">
+                    {% if book.haveRead %}
+                     Finished
+                     {% else %}
+                     Not Finished
+                     {% endif %}
+                </h5>
+                <p class="card-text">
+                    Author: {{ book.author }}
+                </p>
+                <p class="card-text">
+                    Genre: {{ book.genre }}
+                </p>
+                <a href="/books/{{ book.id }}" class="btn btn-info">
+                    View Notes
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% else %}
+  <div>
+    <h2 class="display-6">No books yet... time to add some!</h2>
+  </div>
+  {% endif %}
+{% endblock %}

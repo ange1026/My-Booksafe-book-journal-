@@ -9,7 +9,7 @@ const db = mongoose.connection
 db.on('open', () => {
 
 const startBooks = [
-    { title: 'The Little Prince', author: 'Antoine de Saint-Exupery', genre: 'fiction', haveRead: true},
+    { title: 'The Little Prince', author: 'Antoine de Saint-Exupery', genre: 'Fiction', haveRead: true},
     { title: 'Little Women', author: 'Louisa May Alcott', genre: 'Novel', haveRead: true},
     { title: 'Don Quixote', author: 'Miguel de Cervantes', genre: 'Satire', haveRead: true},
     { title: 'Pride and Predujice', author: 'Jane Austen', genre: 'Romance', haveRead: false},

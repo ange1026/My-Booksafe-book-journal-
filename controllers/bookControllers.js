@@ -1,34 +1,37 @@
 // Import Dependencies
 const express = require('express')
+// const { populate } = require('../models/book')
 const Book = require('../models/book')
 
 // Create router
 const router = express.Router()
 
-// Router Middleware
-// Authorization middleware
-// If you have some resources that should be accessible to everyone regardless of loggedIn status, this middleware can be moved, commented out, or deleted. 
-router.use((req, res, next) => {
-	// checking the loggedIn boolean of our session
-	if (req.session.loggedIn) {
-		// if they're logged in, go to the next thing(thats the controller)
-		next()
-	} else {
-		// if they're not logged in, send them to the login page
-		res.redirect('/users/login')
-	}
-})
+// // Router Middleware
+// // Authorization middleware
+// // If you have some resources that should be accessible to everyone regardless of loggedIn status, this middleware can be moved, commented out, or deleted. 
+// router.use((req, res, next) => {
+// 	// checking the loggedIn boolean of our session
+// 	if (req.session.loggedIn) {
+// 		// if they're logged in, go to the next thing(thats the controller)
+// 		next()
+// 	} else {
+// 		// if they're not logged in, send them to the login page
+// 		res.redirect('/users/login')
+// 	}
+// })
 
 // Routes
 
 // index ALL
 router.get('/', (req, res) => {
 	Book.find({})
+	.populate('comments.author', 'username')
 		.then(books => {
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
+			const userId = req.session.userId
 			
-			res.render('books/index', { books, username, loggedIn })
+			res.render('books/index', { books, username, loggedIn, userId })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -41,6 +44,7 @@ router.get('/mine', (req, res) => {
     const { username, userId, loggedIn } = req.session
 	Book.find({ owner: userId })
 		.then(books => {
+
 			res.render('books/index', { books, username, loggedIn })
 		})
 		.catch(error => {
@@ -51,17 +55,18 @@ router.get('/mine', (req, res) => {
 // new route -> GET route that renders our page with the form
 router.get('/new', (req, res) => {
 	const { username, userId, loggedIn } = req.session
-	res.render('books/new', { username, loggedIn })
+	res.render('books/new', { username, loggedIn, userId })
 })
 
 // create -> POST route that actually calls the db and makes a new document
 router.post('/', (req, res) => {
 	req.body.haveRead = req.body.haveRead === 'on' ? true : false
 
-	req.body.owner = req.session.userId
+	// req.body.owner = req.session.userId
 	Book.create(req.body)
 		.then(book => {
-			console.log('this was returned from create', book)
+			// console.log('this was returned from create', book)
+			const { username, userId, loggedIn } = req.session
 			res.redirect('/books')
 		})
 		.catch(error => {
@@ -73,9 +78,10 @@ router.post('/', (req, res) => {
 router.get('/:id/edit', (req, res) => {
 	// we need to get the id
 	const bookId = req.params.id
+	const { username, userId, loggedIn } = req.session
 	Book.findById(bookId)
 		.then(book => {
-			res.render('books/edit', { book })
+			res.render('books/edit', { book, username, loggedIn, userId })
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
@@ -100,6 +106,7 @@ router.put('/:id', (req, res) => {
 router.get('/:id', (req, res) => {
 	const bookId = req.params.id
 	Book.findById(bookId)
+		.populate('comments.author', 'username')
 		.then(book => {
             const {username, loggedIn, userId} = req.session
 			res.render('books/show', { book, username, loggedIn, userId })

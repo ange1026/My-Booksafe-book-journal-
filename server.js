@@ -23,9 +23,9 @@ middleware(app)
 
 
 app.get('/', (req, res) => {
-    // const { username, userId, loggedIn } = req.session
-	// res.render('index.liquid', { loggedIn, username, userId })
-	res.send('server is running')
+    const { username, userId, loggedIn } = req.session
+	res.render('index.liquid', { loggedIn, username, userId })
+	// res.send('server is running')
 })
 
 app.use('/user', UserRouter)
