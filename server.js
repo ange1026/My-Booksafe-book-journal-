@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 	// res.send('server is running')
 })
 
-app.use('/user', UserRouter)
+app.use('/users', UserRouter)
 app.use('/books', BookRouter)
 
 app.get('/error', (req, res) => {
