@@ -6,8 +6,9 @@ const express = require("express")
 const middleware = require('./utils/middleware')
 const BookRouter = require('./controllers/bookControllers')
 const UserRouter = require('./controllers/userControllers')
-const commentRouter = require('./controllers/commentControllers')
+const CommentRouter = require('./controllers/commentControllers')
 const User = require("./models/user")
+const path = require('path')
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
 // user and resource routes linked in ./utils/middleware.js
 
@@ -31,7 +32,7 @@ app.get('/', (req, res) => {
 
 app.use('/users', UserRouter)
 app.use('/books', BookRouter)
-app.use('/comment', commentRouter)
+app.use('/comment', CommentRouter)
 
 app.get('/error', (req, res) => {
 	const error = req.query.error || 'This Page Does Not Exist'
