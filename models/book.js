@@ -17,9 +17,9 @@ const booksSchema = new Schema(
 		haveRead: { type: Boolean, required: true },
 		owner: {
 			type: Schema.Types.ObjectId,
-			ref: 'User',
+			ref: 'User'
 		},
-		notes: { type: String, required: true},
+		review: { type: String, required: true},
 		comments: [commentSchema]
 	},
 	{ timestamps: true }

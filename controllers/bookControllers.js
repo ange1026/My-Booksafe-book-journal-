@@ -60,32 +60,46 @@ router.get('/new', (req, res) => {
 
 // create -> POST route that actually calls the db and makes a new document
 router.post('/', (req, res) => {
-	req.body.haveRead = req.body.haveRead === 'on' ? true : false
-
-	// req.body.owner = req.session.userId
-	Book.create(req.body)
-		.then(book => {
-			// console.log('this was returned from create', book)
-			const { username, userId, loggedIn } = req.session
-			res.redirect('/books')
-		})
-		.catch(error => {
-			res.redirect(`/error?error=${error}`)
-		})
+    req.body.haveRead = req.body.haveRead === 'on' ? true : false
+    req.body.owner = req.session.userId
+    Book.create(req.body)
+    .then(book => {
+        
+        res.redirect('/books')
+    })
+    .catch(err => res.redirect(`/error?error=${err}`))
 })
+// router.post('/', (req, res) => {
+// 	req.body.haveRead = req.body.haveRead === 'on' ? true : false
+
+// 	// req.body.owner = req.session.userId
+// 	Book.create(req.body)
+// 		.then(book => {
+// 			// console.log('this was returned from create', book)
+// 			const { username, userId, loggedIn } = req.session
+// 			res.redirect('/books')
+// 		})
+// 		.catch(error => {
+// 			res.redirect(`/error?error=${error}`)
+// 		})
+// })
 
 // edit route -> GET that takes us to the edit form view
-router.get('/:id/edit', (req, res) => {
-	// we need to get the id
-	const bookId = req.params.id
-	const { username, userId, loggedIn } = req.session
-	Book.findById(bookId)
-		.then(book => {
-			res.render('books/edit', { book, username, loggedIn, userId })
-		})
-		.catch((error) => {
-			res.redirect(`/error?error=${error}`)
-		})
+router.get("/:id/edit", (req, res) => {
+    const username = req.session.username
+    const loggedIn = req.session.loggedIn
+    const userId = req.session.userId
+
+    const bookId = req.params.id
+
+    Book.findById(bookId)
+        .then(book => {
+            res.render('books/edit', { book, username, loggedIn, userId })
+        })
+        .catch(err => {
+            res.redirect(`/error?error=${err}`)
+        })
+        // res.send('edit page')
 })
 
 // update route

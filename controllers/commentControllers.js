@@ -30,12 +30,13 @@ router.post('/:bookId', (req, res) => {
 })
 
 // DELETE -> only th author of the comment can delete it.
-router.delete('/delete/:fruitId/:commId', (req, res) => {
+router.delete('/delete/:bookId/:commId', (req, res) => {
     const bookId = req.params.bookId
     const commId = req.params.commId
 
     Book.findById(bookId)
         .then(book => {
+            console.log('book', book)
             const theComment = book.comments.id(commId)
             console.log('comment found', theComment)
 

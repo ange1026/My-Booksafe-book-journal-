@@ -3,15 +3,15 @@
     <div class="container-fluid">
         <a href="/" class="navbar-brand">My Booksafe</a>
         {% if loggedIn %}
-        <a href="/books/mine" class="nav-link text-light">Hello {{ username }} </a>
+        <a href="/books" class="nav-link text-light">Hello {{ username }} </a>
         {% endif %}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             {% if loggedIn %}
-                <a href="/books" class="nav-link text-light">View All</a>
-                <a href="/books/new" class="nav-link text-light">New</a>
+                {%- comment -%} <a href="/books" class="nav-link text-light">View All</a> {%- endcomment -%}
+                <a href="/books/new" class="nav-link text-light">New Book</a>
                 <a href="/books/mine" class="nav-link text-light">My Books</a>
                 <a href="/users/logout" class="nav-link text-light">Log Out</a>
             {% else %}

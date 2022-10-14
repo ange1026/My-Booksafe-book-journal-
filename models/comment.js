@@ -3,7 +3,7 @@ const mongoose = require ('./connection')
 const  { Schema } = mongoose
 
 const commentSchema = new Schema({
-    note: {
+    comment: {
         type: String,
         required: true
     },
