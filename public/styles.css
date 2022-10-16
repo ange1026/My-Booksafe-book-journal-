@@ -1,0 +1,11 @@
+* {
+    font-family: 'Inconsolata', monospace;
+}
+
+.card {
+    margin-left: 10px ;
+    margin-right: 10px ;
+    align-content: center;
+    margin-bottom: 10px;
+}
+

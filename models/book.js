@@ -19,7 +19,7 @@ const booksSchema = new Schema(
 			type: Schema.Types.ObjectId,
 			ref: 'User'
 		},
-		review: { type: String, required: true},
+		review: { type: String, required: false },
 		comments: [commentSchema]
 	},
 	{ timestamps: true }

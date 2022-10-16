@@ -1,13 +1,15 @@
 {% layout "layout.liquid" %}
 {% block content %}
 
-    <h1>Welcome!</h1>
+    <div class="container" style="padding:70px 0; text-align:center; margin-top: 150px;">
+    <h1 style="color:#6F412B; font-size:100px;">My Booksafe</h1>
     
-    <div style="display: flex; justify-content:center;">
+    <div>
         <div class="d-grip gap-2 d-md-block">
-            <a href="/users/signup" class="btn btn-success">Sign Up</a>
+            <a href="/users/signup" class="btn btn-success" style="margin-top: 10px; border-radius:15px; padding-left:50px; padding-right:50px;">Sign Up</a>
             <br>
-           <a href="/users/login" class="btn btn-success">Log In</a>
+           <a href="/users/login" class="btn btn-success" style="margin-top: 10px; border-radius:15px; padding-left:50px; padding-right:60px;">Log In</a>
         </div>
+    </div>
     </div>
 {% endblock %}

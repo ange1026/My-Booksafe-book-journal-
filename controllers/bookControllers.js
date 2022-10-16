@@ -38,8 +38,9 @@ router.get('/', (req, res) => {
 		})
 })
 
-// index that shows only the user's examples
+// index that shows only the user's books
 router.get('/mine', (req, res) => {
+	
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
 	Book.find({ owner: userId })
@@ -84,7 +85,7 @@ router.post('/', (req, res) => {
 // 		})
 // })
 
-// edit route -> GET that takes us to the edit form view
+// Edit route -> GET that takes us to the edit form view
 router.get("/:id/edit", (req, res) => {
     const username = req.session.username
     const loggedIn = req.session.loggedIn
@@ -102,7 +103,7 @@ router.get("/:id/edit", (req, res) => {
         // res.send('edit page')
 })
 
-// update route
+// Update route
 router.put('/:id', (req, res) => {
 	const bookId = req.params.id
 	req.body.haveRead = req.body.haveRead === 'on' ? true : false

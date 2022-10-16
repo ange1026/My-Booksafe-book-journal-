@@ -1,36 +1,38 @@
 {% layout 'layout.liquid'%}
 {% block content %}
     {% if books.length > 0 %}
-<div>
-    <div class="row">
-        {% for book in books %}
-        <div class="card" style="width: 18rem;">
-            <h5 class="card-header">{{ book.title }}</h5>
-            <div class="card-body">
-                <h5 class="card-title">
-                    {% if book.haveRead %}
-                     Finished
-                     {% else %}
-                     Not Finished
-                     {% endif %}
-                </h5>
-                <p class="card-text">
-                    Author: {{ book.author }}
-                </p>
-                <p class="card-text">
-                    Genre: {{ book.genre }}
-                </p>
-                <a href="/books/{{ book.id }}" class="btn btn-info">
-                    View Notes
-                </a>
+    <div class="container p-4" style="line-height:0;">
+        <div class="row row-cols-1 row-cols-md-2 g-3 mt-3">
+            {% for book in books %}
+            <div class="card" style="width: 16rem; height:20rem;">
+                <h5 style="text-align: center; margin-top:10px;">{{ book.title }}</h5>
+                <hr>
+                <p class="card-text" style="text-align:center;">
+                    {{ book.author }}
+                    </p>
+
+                    <div class="card-body" style="display:block; position:relative; text-align:right; margin-top:80px; margin-right:5px; padding: 0;">
+                        <p class="card-text">
+                        {{ book.genre }}
+                            <h6 class="card-title ">
+                                {% if book.haveRead %}
+                                Finished
+                                {% else %}
+                                Not Finished
+                                {% endif %}
+                            </h6>
+                        </p>
+                        <a href="/books/{{ book.id }}" class="btn me-md-2" style="background-color:burlywood;">
+                            View Notes
+                        </a>
+                    </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
-</div>
-{% else %}
-  <div>
-    <h2 class="display-6">No books yet... time to add some!</h2>
-  </div>
+    {% else %}
+    <div>
+        <h2 class="display-6">No books yet... time to add some!</h2>
+    </div>
   {% endif %}
 {% endblock %}

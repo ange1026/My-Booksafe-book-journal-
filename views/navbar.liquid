@@ -1,7 +1,8 @@
 {% block content %}
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+{% if loggedIn %}
+<nav class="navbar navbar-expand-md" style="background-color:#003e1f">
     <div class="container-fluid">
-        <a href="/books" class="navbar-brand">My Booksafe</a>
+        <a href="/books" class="navbar-brand" style="color: white;">My Booksafe</a>
         {% if loggedIn %}
         <a href="/books" class="nav-link text-light">Hello {{ username }} </a>
         {% endif %}
@@ -13,12 +14,14 @@
                 {%- comment -%} <a href="/books" class="nav-link text-light">View All</a> {%- endcomment -%}
                 <a href="/books/new" class="nav-link text-light">New Book</a>
                 <a href="/books/mine" class="nav-link text-light">My Books</a>
+                <a href="/wishlist" class="nav-link text-light">Wishlist</a>
                 <a href="/users/logout" class="nav-link text-light">Log Out</a>
             {% else %}
                 <a href="/users/signup" class="nav-link text-light">Sign Up</a>
-                <a href="/users/login" class="nav-link text-light">Sign In</a>
+                <a href="/users/login" class="nav-link text-light">Log In</a>
             {% endif %}
         </div>
     </div>
 </nav>
+{% endif %}
 {% endblock %}
