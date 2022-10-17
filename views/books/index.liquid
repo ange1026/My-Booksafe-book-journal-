@@ -16,13 +16,13 @@
                         {{ book.genre }}
                             <h6 class="card-title ">
                                 {% if book.haveRead %}
-                                Finished
+                                Have Read
                                 {% else %}
-                                Not Finished
+                                Haven't Read
                                 {% endif %}
                             </h6>
                         </p>
-                        <a href="/books/{{ book.id }}" class="btn me-md-2" style="background-color:burlywood;">
+                        <a href="/books/{{ book.id }}" class="btn me-md-2">
                             View Notes
                         </a>
                     </div>

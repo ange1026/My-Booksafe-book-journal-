@@ -1,4 +1,5 @@
 // IMPORT DEPENDENCIES //
+const { response } = require('express')
 const express = require('express')
 const Wishlist = require ('../models/wishlist')
 
@@ -55,22 +56,37 @@ router.post('/update', (req, res) => {
 })
 
 
+
+// router.delete('/:wishlistId', (req, res) => {
+//     const wishlistId = req.params.id
+    
+//     Wishlist.findByIdAndRemove(wishlistId)
+//             .then(wishlist => {
+//                 res.redirect(`/wishlist/${wishlist.id}`)
+//             })
+//             .catch(err => {
+//                 response.redirect(`/error?error=${err}`)
+//             })
+// })
+
 // DELETE
 router.delete('/delete/:wishlistId', (req, res) => {
     const wishlistId = req.params.wishlistId
    
     Wishlist.findById(wishlistId)
-        .then(list=> {
-            console.log('user', list.wishlist.user)
-            console.log('wishlist', list)
-            const theWishlist = list.wishlist
-            console.log('List item found', theWishlist)
+    // returns the one document found as an object
+        .then(wishlistItem => {
+            // console.log('after wishlist find the list is', list)
+            console.log('wishlistItem.user', wishlistItem.user)
+            // console.log('wishlist', list)
+            console.log('this is the current user from session', req.session.userId)
+            // console.log('List item found', theWishlist)
 
             if (req.session.loggedIn) {
-                if (theWishlist.user == req.session.userId) {
-                    theWishlist.remove()
-                    list.save()
-                    res.redirect(`/wishlist/${list.id}`)
+                if (wishlistItem.user == req.session.userId) {
+                    wishlistItem.remove()
+                    
+                    res.redirect(`/wishlist`)
                 }else {
                     const err = 'you%20are%20not%authorized%20for%20this%20action'
                     res.redirect(`/error?error=${err}`)
