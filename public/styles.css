@@ -9,3 +9,8 @@
     margin-bottom: 10px;
 }
 
+body {
+    background-image: url('/paperImage.jpg');
+    height: 100vh;
+    background-size: cover;
+}

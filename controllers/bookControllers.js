@@ -107,9 +107,10 @@ router.get("/:id/edit", (req, res) => {
 router.put('/:id', (req, res) => {
 	const bookId = req.params.id
 	req.body.haveRead = req.body.haveRead === 'on' ? true : false
-
+	console.log('part1')
 	Book.findByIdAndUpdate(bookId, req.body, { new: true })
 		.then(book => {
+			console.log('part2')
 			res.redirect(`/books/${book.id}`)
 		})
 		.catch((error) => {

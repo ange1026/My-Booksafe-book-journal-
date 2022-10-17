@@ -4,14 +4,14 @@
     <div class="container p-4" style="line-height:0;">
         <div class="row row-cols-1 row-cols-md-2 g-3 mt-3">
             {% for book in books %}
-            <div class="card" style="width: 16rem; height:20rem;">
-                <h5 style="text-align: center; margin-top:10px;">{{ book.title }}</h5>
-                <hr>
-                <p class="card-text" style="text-align:center;">
+            <div class="card" style="width: 16rem; height:20rem; border: solid brown;">
+                <h5 class="text-uppercase" style="text-align: center; margin-top:10px;">{{ book.title }}</h5>
+                <hr style="border: solid brown;">
+                <p class="card-text fw-bold" style="text-align:center;">
                     {{ book.author }}
                     </p>
 
-                    <div class="card-body" style="display:block; position:relative; text-align:right; margin-top:80px; margin-right:5px; padding: 0;">
+                    <div class="card-body text-wrap" style="display:block; position:relative; text-align:right; margin-top:80px; margin-right:5px; padding: 0;">
                         <p class="card-text">
                         {{ book.genre }}
                             <h6 class="card-title ">

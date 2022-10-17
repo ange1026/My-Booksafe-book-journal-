@@ -22,6 +22,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     const { userId, loggedIn } = req.session
+    console.log('hitting post route')
     if (!loggedIn) {
         res.sendStatus(401)
     }
@@ -57,15 +58,16 @@ router.post('/update', (req, res) => {
 // DELETE
 router.delete('/delete/:wishlistId', (req, res) => {
     const wishlistId = req.params.wishlistId
-
+   
     Wishlist.findById(wishlistId)
         .then(list=> {
+            console.log('user', list.wishlist.user)
             console.log('wishlist', list)
-            const theWishlist = list.wishlists.id(wishlistId)
+            const theWishlist = list.wishlist
             console.log('List item found', theWishlist)
 
             if (req.session.loggedIn) {
-                if (theWishlist.author == req.session.userId) {
+                if (theWishlist.user == req.session.userId) {
                     theWishlist.remove()
                     list.save()
                     res.redirect(`/wishlist/${list.id}`)

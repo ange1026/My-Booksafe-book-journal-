@@ -3,26 +3,24 @@
 
 <div class="container p-3">
    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#create-wishlist">Add to List</button>
-   <ul class="list-group gap-3 d-inline">
+   <ul class="list-group gap-3">
         {% for wishlistItem in wishlist %}
         <li class="list-group-item">
+            
             {% if wishlistItem.isAvailable %}
+    
             <input class="form-check-input me-1" checked data-wishlist-id="{{ wishlistItem.id }}" type="checkbox" id="firstCheckbox">
-            {% if wishlist.user == userId %}
-                    <form action="/wishlist/delete/{{ wishlistItem.id }}?_method=DELETE" method="POST">
-                        <input class="btn btn-danger d-inline" type="submit" value="X">
-                    </form>
-                {% endif %}
             {% else %}
             <input class="form-check-input me-1" data-wishlist-id="{{ wishlistItem.id }}" type="checkbox" id="firstCheckbox">
-            {% if wishlist.user == userId %}
-                    <form action="/wishlist/delete/{{ wishlistItem.id }}?_method=DELETE" method="POST">
-                        <input class="btn btn-danger" type="submit" value="X" style="display:right;">
-                    </form>
-                {% endif %}
+
             {% endif %}
             <label class="form-check-label" for="firstCheckbox">{{ wishlistItem.wishlist}}</label>
         </li>
+        {% if wishlist.user == userId %}
+                    <form action="/wishlist/delete/{{ wishlistItem.id }}?_method=DELETE" method="POST" style="margin: 10px;">
+                        <input class="btn btn-danger" type="submit" value="" style="width:15px; height:15px;">
+                    </form>
+                {% endif %}
         {% endfor %}
    </ul>
 </div>
@@ -31,13 +29,13 @@
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="create-wishlist-label">Modal title</h1>
+            <h1 class="modal-title fs-5" id="create-wishlist-label">Add a book that you would like to read:</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
          </div>
          <div class="modal-body">
                <form action="/wishlist" method="POST">
                 <fieldset>
-                    <legend>New Wishlist</legend>
+                    <legend>New Item</legend>
                     <label class="form-label">Title: </label>
                     <input 
                         type="text" 
@@ -46,11 +44,12 @@
                         class="form-control"
                     >
                 </fieldset>
+                <button type="submit" data-bs-dismiss="modal" data-submit-button class="btn btn-success mt-3">Create</button>
             </form>
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" data-bs-dismiss="modal" data-submit-button class="btn btn-success">Create New Wishlist</button>
+            
          </div>
       </div>
    </div>

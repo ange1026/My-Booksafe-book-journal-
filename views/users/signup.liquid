@@ -1,17 +1,16 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-
-<div class="container-sm" style="text-align:center;">
+<div class="container">
+    
     <form action="/users/signup" method="POST">
         <fieldset>
             <legend>Sign Up Here!</legend>
             <label class="form-label">Username: </label>
-            <input type="text" name="username" placeholder="username" class="form-control" style="width:250px" required>
+            <input type="text" name="username" placeholder="username" class="form-control" style="width:250px; " required>
             <label class="form-label">Password</label>
-            <input type="password" name="password" placeholder="enter password" class="form-control" style="width:250px; position:relative;" required>
+            <input type="password" name="password" placeholder="enter password" class="form-control" style="width:250px;" required>
         </fieldset>
         <input type="submit" value="Create Account" class="btn btn-success mt-3">
     </form>
 </div>
-
 {% endblock %}

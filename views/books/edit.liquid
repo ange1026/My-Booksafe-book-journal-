@@ -1,7 +1,7 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 <div class="container-sm">
-    <form action="/books" method="POST">
+    <form action="/books/{{book.id}}?_method=PUT" method="POST">
         <fieldset>
             <legend>Create New Book</legend>
             <label class="form-label">Title: </label>
