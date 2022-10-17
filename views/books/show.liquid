@@ -13,7 +13,9 @@
         </h2>
         <h6>{{ book.genre }}</h6>
 
-        <p style="background-color:lightgray;">{{book.review }}</p>
+        <div class="review">
+            <p>{{book.review }}</p>
+        </div>
         {% if book.owner == userId %}
         <div class="btn-group">
 

@@ -1,6 +1,16 @@
 {% layout "layout.liquid" %}
 {% block content %}
 
+{%- comment -%} {% if request.path contains 'signup' %}
+    <style>
+    body {
+    background-image: url({{'/paperImage.jpg' }});
+    height: 100vh;
+    background-size: cover;
+    }
+    </style>
+{% endif%} {%- endcomment -%}
+  <body class="index1">
     <div class="container" style="padding:70px 0; text-align:center; margin-top: 150px;">
     <h1 style="color:#6F412B; font-size:100px;">My Booksafe</h1>
     
@@ -12,4 +22,5 @@
         </div>
     </div>
     </div>
+    </body>
 {% endblock %}

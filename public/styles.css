@@ -9,17 +9,49 @@
     margin-bottom: 10px;
 }
 
-body {
-     /* background-image: url('/paperImage.jpg');
+ .index1 {
+      background-image: url('/journalBackground.jpg');
     height: 100vh;
     background-size: cover; 
-     filter: blur(8px); */
- background-color: #fff1e6;   
-}
-    
-
-
+     
+ }
+ 
 .btn {
     background-color: #003e1f;
     color: whitesmoke;
+}
+
+.signupPage {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.signupForm {
+    border: solid brown;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loginPage {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.loginForm {
+    border: solid brown;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.review {
+    width: 50%;
+    padding: 10px;
+  border: solid gray;
+  background-color: lightgrey;
 }

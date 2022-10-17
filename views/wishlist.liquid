@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="container p-3">
-   <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#create-wishlist">Add to List</button>
+   <button type="button" class="btn mb-3" data-bs-toggle="modal" data-bs-target="#create-wishlist">Add to List</button>
    <ul class="list-group gap-3">
         {% for wishlistItem in wishlist %}
         <li class="list-group-item">
@@ -18,7 +18,7 @@
         </li>
         {% if wishlist.user == userId %}
                     <form action="/wishlist/delete/{{ wishlistItem.id }}?_method=DELETE" method="POST" style="margin: 10px;">
-                        <input class="btn btn-danger" type="submit" value="X" >
+                        <input class="btn" type="submit" value="X" style="backgound-color: red;">
                     </form>
                 {% endif %}
         {% endfor %}
