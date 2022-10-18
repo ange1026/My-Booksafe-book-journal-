@@ -1,3 +1,4 @@
+// import dependencies
 const mongoose = require ('./connection')
 
 const  { Schema, model } = mongoose
@@ -23,5 +24,5 @@ const listSchema = new Schema({
 
 const Wishlist = model("Wishlist", listSchema)
 
-
+// export model
 module.exports = Wishlist
