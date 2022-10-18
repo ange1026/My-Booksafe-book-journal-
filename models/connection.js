@@ -4,13 +4,13 @@ require('dotenv').config()
 const mongoose = require('mongoose')
 
 // DATABASE CONNECTION
-const DATABASE_URL = process.env.DATABASE_URL
+const DEPLOYED_URL = process.env.DEPLOYED_URL
 const CONFIG = {
 	useUnifiedTopology: true,
 	useNewUrlParser: true,
 }
 
-mongoose.connect(DATABASE_URL, CONFIG)
+mongoose.connect(DEPLOYED_URL, CONFIG)
 
 // // connect to the database
 // mongoose.connect(process.env.DATABASE_URL, {
