@@ -23,10 +23,13 @@
 
 .signupPage {
     margin: auto;
-    width: 50%;
+    width: 25%;
     padding: 10px;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 175px;
+    background-color: #F4F4F9;
+    border: solid brown;
+    border-radius: 10px;
 }
 
 .signupForm {
@@ -35,12 +38,19 @@
     margin-right: auto;
 }
 
+.signupbackground {
+    background-color: #f1e7dd;
+}
+
 .loginPage {
     margin: auto;
-    width: 50%;
+    width: 25%;
     padding: 10px;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 175px;
+    background-color: #F4F4F9;
+    border: solid brown;
+    border-radius: 10px;
 }
 
 .loginForm {
@@ -53,5 +63,22 @@
     width: 50%;
     padding: 10px;
   border: solid gray;
-  background-color: lightgrey;
+  background-color: #e9ecef;
+  border-radius: 15px;
+}
+
+.logoutPage {
+    width: 50%;
+    padding:10px;
+    border: solid brown;
+    background-color: blanchedalmond;
+    margin-top: 20px;
+}
+
+.loginbackground {
+    background-color: #f1e7dd;
+}
+
+.form-control {
+    border: solid brown;
 }

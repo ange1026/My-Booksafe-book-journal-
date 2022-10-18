@@ -1,94 +1,90 @@
 {% layout "layout.liquid" %}
 {% block content %}
 
-<div class="container p-3">
-   <button type="button" class="btn mb-3" data-bs-toggle="modal" data-bs-target="#create-wishlist">Add to List</button>
-   <ul class="list-group gap-3">
-        {% for wishlistItem in wishlist %}
-        <li class="list-group-item">
-            
-            {% if wishlistItem.isAvailable %}
-    
-            <input class="form-check-input me-1" checked data-wishlist-id="{{ wishlistItem.id }}" type="checkbox" id="firstCheckbox">
-            {% else %}
-            <input class="form-check-input me-1" data-wishlist-id="{{ wishlistItem.id }}" type="checkbox" id="firstCheckbox">
-
-            {% endif %}
-            <label class="form-check-label" for="firstCheckbox">{{ wishlistItem.wishlist}}</label>
-        </li>
-        {% if wishlist.user == userId %}
-                    <form action="/wishlist/delete/{{ wishlistItem.id }}?_method=DELETE" method="POST" style="margin: 10px;">
-                        <input class="btn" type="submit" value="X" style="backgound-color: red;">
+    <div class="container p-3">
+        <button type="button" class="btn mb-3" data-bs-toggle="modal" data-bs-target="#create-wishlist">Add to List</button>
+        <ul class="list-group gap-3">
+                {% for wishlistItem in wishlist %}
+                    <li class="list-group-item">
+                        
+                        {% if wishlistItem.isAvailable %}
+                        <input class="form-check-input me-1" checked data-wishlist-id="{{ wishlistItem.id }}" type="checkbox" id="firstCheckbox">
+                        {% else %}
+                        <input class="form-check-input me-1" data-wishlist-id="{{ wishlistItem.id }}" type="checkbox" id="firstCheckbox">
+                        {% endif %}
+                        <label class="form-check-label" for="firstCheckbox">{{ wishlistItem.wishlist}}</label>
+                    
+                    </li>
+                    {% if wishlist.user == userId %}
+                        <form action="/wishlist/delete/{{ wishlistItem.id }}?_method=DELETE" method="POST" style="margin: 10px;">
+                            <input class="btn" type="submit" value="X" style="background-color: #c5283d;">
+                        </form>
+                    {% endif %}
+                {% endfor %}
+        </ul>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="create-wishlist" tabindex="-1" aria-labelledby="create-wishlist-label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="create-wishlist-label">Add a book that you would like to read:</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/wishlist" method="POST">
+                        <fieldset>
+                            <legend>New Item</legend>
+                            <label class="form-label">Title: </label>
+                            <input 
+                                type="text" 
+                                name="wishlist" 
+                                placeholder= "title"
+                                class="form-control"
+                            >
+                        </fieldset>
+                        <button type="submit" data-bs-dismiss="modal" data-submit-button class="btn mt-3">Create</button>
                     </form>
-                {% endif %}
-        {% endfor %}
-   </ul>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="create-wishlist" tabindex="-1" aria-labelledby="create-wishlist-label" aria-hidden="true">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h1 class="modal-title fs-5" id="create-wishlist-label">Add a book that you would like to read:</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-         </div>
-         <div class="modal-body">
-               <form action="/wishlist" method="POST">
-                <fieldset>
-                    <legend>New Item</legend>
-                    <label class="form-label">Title: </label>
-                    <input 
-                        type="text" 
-                        name="wishlist" 
-                        placeholder= "title"
-                        class="form-control"
-                    >
-                </fieldset>
-                <button type="submit" data-bs-dismiss="modal" data-submit-button class="btn btn-success mt-3">Create</button>
-            </form>
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            
-         </div>
-      </div>
-   </div>
-</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 
-<script defer>
-    const [form] = document.getElementsByTagName('form');
-    const submitButton = document.querySelector('[data-submit-button]')
-    const isAvailableInputs = document.querySelectorAll('[data-wishlist-id]')
-    submitButton.addEventListener('click', () => {
-        form.submit();
-    })
+    <script defer>
+        const [form] = document.getElementsByTagName('form');
+        const isAvailableInputs = document.querySelectorAll('[data-wishlist-id]')
     
-    isAvailableInputs.forEach(input => {
-        input.addEventListener('change', ({ target }) => {
-            const id = target.getAttribute('data-wishlist-id')
-            const payload = {
-                isAvailable: target.checked,
-                id
-            }
-            callBackend(id, payload)
-        });
-    })
+        
+        isAvailableInputs.forEach(input => {
+            input.addEventListener('change', ({ target }) => {
+                const id = target.getAttribute('data-wishlist-id')
+                const payload = {
+                    isAvailable: target.checked,
+                    id
+                }
+                callBackend(id, payload)
+            });
+        })
 
-    function callBackend(id, payload) {
-        const url = '/wishlist/update'
-        fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                credentials: 'include',
-                body: JSON.stringify(payload)
-            }).then(response => {
-                console.log(response)
-            }).catch(err => {
-                console.log(err)
-            })
-    }
-</script>
+        function callBackend(id, payload) {
+            const url = '/wishlist/update'
+            fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify(payload)
+                }).then(response => {
+                    console.log(response)
+                }).catch(err => {
+                    console.log(err)
+                })
+        }
+    </script>
 
 {% endblock %}

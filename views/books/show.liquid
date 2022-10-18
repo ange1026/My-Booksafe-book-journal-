@@ -1,43 +1,40 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-<div class="container-md">
+<div class="container-md mt-3 p-3">
     <article>
-        <h2>{{ book.title }} </h2>
-        <h3>{{ book.author }}</h3>
+        <h2>{{ book.title }} - {{book.author}} </h2>
         <h4>
             {% if book.haveRead%}
-            Finished
+            Have Read
             {% else %}
-            Not Finished
+            Haven't Read
             {%endif%}
         </h2>
-        <h6>{{ book.genre }}</h6>
+        <h6 class="fst-italic">{{ book.genre }}</h6>
 
         <div class="review">
             <p>{{book.review }}</p>
         </div>
         {% if book.owner == userId %}
-        <div class="btn-group">
+        <div class="d-gridgap-2 d-md-block mt-3">
 
-            <a href="/books/{{ book.id }}/edit" class="btn btn-primary">Edit</a>
+            <a href="/books/{{ book.id }}/edit" class="btn">Edit</a>
             <form action="/books/{{ book.id }}?_method=DELETE" method="POST">
-                <input type="submit" value="Delete" class="btn btn-danger">
+                <input type="submit" value="Delete" class="btn mt-2" style="background-color:#c5283d;">
             </form>
         </div>
         {% endif %}
     </article>
     <hr>
-    <h5>Comments</h5>
-    <hr>
+    <div class="comments">
     {% if loggedIn %}
         <div class="col-md-6">
             <form action="/comment/{{ book.id }}" method="POST">
             <fieldset>
                 <legend>Add Comment</legend>
-                <label class="form-label">comment:</label>
                 <input class="form-control mb-1" type="text" placeholder="enter your comment..." name="comment" required>
             </fieldset>
-            <input class="btn" type="submit" value="add comment">
+            <input class="btn" type="submit" value="Submit">
             </form>
         </div>
 
@@ -46,7 +43,6 @@
         <small>If you'd like to comment please log in...</small>
     </div>
     {% endif %}
-    <hr>
     {% if book.comments.length > 0 %}
     <div class="container-sm justify-content-center">
         <div class="col-md-8 col-lg-6">
@@ -58,5 +54,6 @@
     {% else %}
     <small>no comments yet...</small>
     {% endif %}
+    </div>
     </div>
 {% endblock %}

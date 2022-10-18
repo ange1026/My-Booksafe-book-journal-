@@ -1,11 +1,11 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-    <div class="container-md">
+    <div class="container-md logoutPage">
         <h2>Are you sure you would like to log out?</h2>
-        <div class="btn-group">
+        <div class="d-grid gap-2 d-md-block">
             <a class="btn">No, back to the Main Page</a>
             <form action="/users/logout?_method=DELETE" method="POST">
-                <input class="btn" type="submit" value="Yes, log me out">
+                <input class="btn mt-3" type="submit" value="Yes, log me out" style="background-color:#c5283d;">
             </form>
         </div>
     </div>

@@ -57,18 +57,6 @@ router.post('/update', (req, res) => {
 
 
 
-// router.delete('/:wishlistId', (req, res) => {
-//     const wishlistId = req.params.id
-    
-//     Wishlist.findByIdAndRemove(wishlistId)
-//             .then(wishlist => {
-//                 res.redirect(`/wishlist/${wishlist.id}`)
-//             })
-//             .catch(err => {
-//                 response.redirect(`/error?error=${err}`)
-//             })
-// })
-
 // DELETE
 router.delete('/delete/:wishlistId', (req, res) => {
     const wishlistId = req.params.wishlistId
