@@ -2,7 +2,7 @@
 const mongoose = require('./connection')
 
 // import user model for populate
-const User = require('./user')
+const User = require('./user') // unused import
 
 const commentSchema = require('./comment')
 
@@ -10,12 +10,12 @@ const commentSchema = require('./comment')
 const { Schema, model } = mongoose
 
 const booksSchema = new Schema(
-	{
+	{   // inconsistent indentation here, pick one format and stick with it v
 		title: { type: String, required: true },
 		author: { type: String, required: true },
         genre: { type: String, required: true },
 		haveRead: { type: Boolean, required: true },
-		owner: {
+		owner: {// < i prefer it like this 
 			type: Schema.Types.ObjectId,
 			ref: 'User'
 		},

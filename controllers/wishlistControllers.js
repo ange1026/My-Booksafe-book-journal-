@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     const { userId, loggedIn } = req.session
     console.log('hitting post route')
-    if (!loggedIn) {
+    if (!loggedIn) { // nice log in check 
         res.sendStatus(401)
     }
 
@@ -43,7 +43,7 @@ router.post('/', (req, res) => {
 
 router.post('/update', (req, res) => {
 	const wishlistId = req.body.id
-    const isAvailable = req.body.isAvailable;
+    const isAvailable = req.body.isAvailable; // no log in check or authorization - if i had the data i could edit another users wishlist ?
 
 	Wishlist.findByIdAndUpdate(wishlistId, { isAvailable: isAvailable })
 		.then((res) => {
@@ -70,7 +70,7 @@ router.delete('/delete/:wishlistId', (req, res) => {
             console.log('this is the current user from session', req.session.userId)
             // console.log('List item found', theWishlist)
 
-            if (req.session.loggedIn) {
+            if (req.session.loggedIn) {// consolidate block or change errors to be different 
                 if (wishlistItem.user == req.session.userId) {
                     wishlistItem.remove()
                     

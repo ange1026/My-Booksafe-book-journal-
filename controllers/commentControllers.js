@@ -28,7 +28,7 @@ router.post('/:bookId', (req, res) => {
         })
         .catch(err => res.redirect(`/error?error=${err}`))
 })
-
+// no update ?
 // DELETE -> only th author of the comment can delete it.
 router.delete('/delete/:bookId/:commId', (req, res) => {
     const bookId = req.params.bookId
@@ -40,7 +40,7 @@ router.delete('/delete/:bookId/:commId', (req, res) => {
             const theComment = book.comments.id(commId)
             console.log('comment found', theComment)
 
-            if (req.session.loggedIn) {
+            if (req.session.loggedIn) {// consolidate this block by using && since the error codes are the same 
                 if (theComment.author == req.session.userId) {
                     theComment.remove()
                     book.save()
@@ -49,7 +49,7 @@ router.delete('/delete/:bookId/:commId', (req, res) => {
                     const err = 'you%20are%20not%authorized%20for%20this%20action'
                     res.redirect(`/error?error=${err}`)
                 } 
-                } else {
+                } else {// careful of the indentation here
                     const err = 'you%20are%20not%authorized%20for%20this%20action'
                     res.redirect(`/error?error=${err}`)
                 }
