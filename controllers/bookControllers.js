@@ -61,7 +61,7 @@ router.get('/new', (req, res) => {
 
 // create -> POST route that actually calls the db and makes a new document
 router.post('/', (req, res) => {
-    req.body.haveRead = req.body.haveRead === 'on' ? true : false
+    req.body.haveRead = req.body.haveRead === 'on' ? true : false // NICE ternary ! 
     req.body.owner = req.session.userId
     Book.create(req.body)
     .then(book => {
